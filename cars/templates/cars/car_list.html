@@ -1,0 +1,27 @@
+{% extends 'cars/base.html' %}
+{% block content %}
+<h2 class="mb-4"><i class="bi bi-garage"></i> Your Cars</h2>
+
+<div class="row g-4">
+  {% for car in cars %}
+  <div class="col-sm-6 col-lg-4">
+    <div class="card h-100 shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">
+          <i class="bi bi-car-front me-1"></i>
+          {{ car.year }} {{ car.make }} {{ car.model }} {{car.color }}
+        </h5>
+        <p class="card-text"><i class="bi bi-123 me-1"></i> VIN: {{ car.vin }}</p>
+      </div>
+      <div class="card-footer bg-transparent border-top-0">
+        <a href="{% url 'car_detail' car.pk %}" class="btn btn-outline-primary w-100">
+          View Details
+        </a>
+      </div>
+    </div>
+  </div>
+  {% empty %}
+    <p class="text-muted">No cars yet. <a href="{% url 'add_car' %}">Add your first car</a>.</p>
+  {% endfor %}
+</div>
+{% endblock %}
