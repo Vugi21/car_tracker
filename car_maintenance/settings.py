@@ -48,9 +48,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'car_maintenance.wsgi.application'
 
-DDATABASES = {
+DATABASES = {
     'default': dj_database_url.config(
-        default=os.environ.get('postgresql://car_maintenance_db_user:lJdXNmzUprwrxUnuk7DSDwbhM3YmnDDR@dpg-d13q5jp5pdvs73fqels0-a/car_maintenance_db')
+        default=os.environ.get('DATABASE_URL')
     )
 }
 
