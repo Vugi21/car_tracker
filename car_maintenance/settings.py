@@ -1,5 +1,6 @@
 import os
 from pathlib import Path
+import dj_database_url
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -47,12 +48,12 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'car_maintenance.wsgi.application'
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+DDATABASES = {
+    'default': dj_database_url.config(
+        default=os.environ.get('postgresql://car_maintenance_db_user:lJdXNmzUprwrxUnuk7DSDwbhM3YmnDDR@dpg-d13q5jp5pdvs73fqels0-a/car_maintenance_db')
+    )
 }
+
 
 AUTH_PASSWORD_VALIDATORS = []
 
